@@ -1,0 +1,10 @@
+# macOS system files
+.DS_Store
+
+# Node.js dependencies (if applicable)
+node_modules/
+
+# Logs
+*.log
+
+# Other specific files or folders to ignore

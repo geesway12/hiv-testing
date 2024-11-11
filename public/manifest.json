@@ -1,22 +1,21 @@
 {
-    "name": "HIV Testing Register",
-    "short_name": "HIVRegister",
-    "description": "An offline HIV testing and counseling register app",
-    "start_url": "./index.html",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#00796b",
-    "icons": [
-      {
-        "src": "./images/icon-192x192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "./images/icon-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ]
-  }
-  
+  "name": "HIV Testing Register",
+  "short_name": "HIVRegister",
+  "description": "An offline HIV testing and counseling register app",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00796b",
+  "icons": [
+    {
+      "src": "assets/icons/icon_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
