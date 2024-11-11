@@ -1,0 +1,139 @@
+/* Reset body style */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark grey text for readability */
+}
+
+/* Centered container with padding and responsive design */
+.container {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Elevated block style for each section */
+.section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: normal; /* Regular font weight for minimalist look */
+}
+
+/* Input, select, textarea, and button styling */
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #fafafa; /* Light background for inputs */
+    color: #333;
+}
+
+/* Input and select with a larger font for better readability */
+input, select, textarea {
+    font-size: 1em;
+}
+
+/* Textarea styling for comments */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Section visibility control */
+.section {
+    display: none; /* Hide all sections by default */
+}
+
+/* Show the first section (Testing Section) by default */
+#block-1 {
+    display: block;
+}
+
+/* Button styling for a minimalist look */
+button {
+    background-color: #333; /* Dark grey button */
+    color: #fff; /* White text */
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* Button hover and active effects */
+button:hover {
+    background-color: #555; /* Slightly lighter grey on hover */
+}
+
+button:active {
+    transform: scale(0.98); /* Subtle shrink effect on click */
+}
+
+/* Navigation button styling */
+button[type="button"] {
+    margin-top: 15px;
+    padding: 12px;
+}
+
+/* Export button styling to make it stand out */
+#export-btn {
+    background-color: #444;
+    color: #fff;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Larger font for headings */
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.4em;
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    input, select, textarea, button {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+}

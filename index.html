@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js")
+                .then(registration => {
+                    console.log("Service Worker registered with scope:", registration.scope);
+                })
+                .catch(error => {
+                    console.log("Service Worker registration failed:", error);
+                });
+        }
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIV Testing Register</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>HIV Testing and Counseling Register</h1>
+
+        <!-- Export Button at the Top -->
+        <button id="export-btn" type="button" onclick="exportCSV()">Export as CSV</button>
+
+        <!-- Block 1: Basic Info -->
+        <div class="section" id="block-1">
+            <h2>Basic Information</h2>
+
+            <label for="serial-number">Serial Number:</label>
+            <input type="number" id="serial-number" min="1" step="1" required>
+
+            <label for="date-of-service">Date of Service Delivery:</label>
+            <input type="date" id="date-of-service" max="" required>
+
+            <label for="client-name">Full Name of Client:</label>
+            <input type="text" id="client-name" required>
+
+            <label for="address">Traceable Address and Telephone Numbers:</label>
+            <input type="text" id="address" required>
+
+            <label for="age">Age (Completed years only):</label>
+            <input type="number" id="age" min="1" max="150" step="1" required>
+
+            <label for="sex">Sex:</label>
+            <select id="sex" required>
+                <option value="" disabled selected>Select Sex</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select>
+
+            <button type="button" onclick="nextSection('block-2')">Next</button>
+        </div>
+
+        <!-- Block 2: Testing Information -->
+        <div class="section" id="block-2" style="display: none;">
+            <h2>Testing Information</h2>
+
+            <label for="pre-test-info">Pre-Test Information:</label>
+            <select id="pre-test-info" required>
+                <option value="" disabled selected>Select Pre-Test Info</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="testing-point">Testing Point:</label>
+            <select id="testing-point" required>
+                <option value="" disabled selected>Select Testing Point</option>
+                <option value="OPD">OPD</option>
+                <option value="IPD">IPD</option>
+                <option value="CWC">CWC</option>
+                <option value="FP">FP</option>
+                <option value="ANC">ANC</option>
+                <option value="Emergency">Emergency</option>
+                <option value="SNS">SNS</option>
+                <option value="TB Clinic">TB Clinic</option>
+                <option value="VCT">VCT</option>
+                <option value="STI">STI</option>
+                <option value="Nutrition">Nutrition</option>
+                <option value="Others">Others</option>
+            </select>
+
+            <label for="type-of-client">Type of Client:</label>
+            <select id="type-of-client" required>
+                <option value="" disabled selected>Select Type of Client</option>
+                <option value="CIC">Child of an index client (CIC)</option>
+                <option value="PIC">Partner of an index client (PIC)</option>
+                <option value="STI">STI client</option>
+                <option value="HR">High-risk clients (MSM, FSW, Men in Uniform, Long-distance drivers)</option>
+                <option value="TB">TB patients</option>
+                <option value="DT">Diagnostic testing</option>
+                <option value="OT">Other populations</option>
+            </select>
+
+            <label for="first-response">First Response:</label>
+            <select id="first-response" required>
+                <option value="" disabled selected>Select First Response</option>
+                <option value="RI">RI</option>
+                <option value="RII">RII</option>
+                <option value="RI&RII">RI & RII</option>
+                <option value="Non-Reactive">Non-Reactive</option>
+            </select>
+
+            <div id="oraquick-sd-section" style="display: none;">
+                <label for="oraquick">Oraquick:</label>
+                <select id="oraquick">
+                    <option value="" disabled selected>Select Oraquick Result</option>
+                    <option value="Reactive">Reactive</option>
+                    <option value="Non-Reactive">Non-Reactive</option>
+                </select>
+
+                <label for="sd-bioline">SD Bioline:</label>
+                <select id="sd-bioline">
+                    <option value="" disabled selected>Select SD Bioline Result</option>
+                    <option value="HIV 1">HIV 1</option>
+                    <option value="HIV 2">HIV 2</option>
+                    <option value="HIV 1&2">HIV 1&2</option>
+                    <option value="Non-Reactive">Non-Reactive</option>
+                </select>
+            </div>
+
+            <label for="final-test-result">Final Test Result:</label>
+            <select id="final-test-result" required>
+                <option value="" disabled selected>Select Final Test Result</option>
+                <option value="New Positive">New Positive</option>
+                <option value="Known Positive">Known Positive</option>
+                <option value="Known Negative">Known Negative</option>
+                <option value="Inconclusive">Inconclusive</option>
+                <option value="New Negative">New Negative</option>
+            </select>
+
+            <label for="post-test-counseling">Post Test Counseling:</label>
+            <select id="post-test-counseling" required>
+                <option value="" disabled selected>Select Counseling Status</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <button type="button" onclick="previousSection('block-1')">Previous</button>
+            <button type="button" onclick="nextSection('block-3')">Next</button>
+        </div>
+
+        <!-- Block 3: Linkage Section -->
+        <div class="section" id="block-3" style="display: none;">
+            <h2>Linkage</h2>
+
+            <label for="linked-to-care">Linked to HIV Care:</label>
+            <select id="linked-to-care">
+                <option value="" disabled selected>Select Linked Status</option>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+
+            <label for="folder-number">Folder Number (if linked):</label>
+            <input type="text" id="folder-number">
+
+            <button type="button" onclick="previousSection('block-2')">Previous</button>
+            <button type="button" onclick="nextSection('block-4')">Next</button>
+        </div>
+
+        <!-- Block 4: Comments Section -->
+        <div class="section" id="block-4" style="display: none;">
+            <h2>Comments</h2>
+            <textarea id="comments" required></textarea>
+
+            <button type="button" onclick="previousSection('block-3')">Previous</button>
+            <button id="submit-btn" type="button">Save Entry</button>
+            <!-- Duplicate Export Button for Final Page -->
+            <button id="export-btn" type="button" onclick="exportCSV()">Export as CSV</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
